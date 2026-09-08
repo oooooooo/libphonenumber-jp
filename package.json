@@ -60,7 +60,8 @@
 		"lint:fix": "biome check --write",
 		"test": "node --test \"test/*.test.ts\"",
 		"coverage": "node --test --experimental-test-coverage \"test/*.test.ts\"",
-		"prepublishOnly": "npm run lint && npm run typecheck && npm test && npm run build"
+		"prepare": "npm run build",
+		"prepublishOnly": "npm run lint && npm run typecheck && npm test"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.12",
