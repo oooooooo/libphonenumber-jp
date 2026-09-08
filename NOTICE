@@ -1,0 +1,25 @@
+libphonenumber-jp
+
+The numbering plan in src/data.ts (shipped as dist/*/data.js) is generated from
+Google's libphonenumber:
+
+    https://github.com/google/libphonenumber
+    Copyright (C) 2009 The Libphonenumber Authors
+    Licensed under the Apache License, Version 2.0.
+
+A copy of that license is included at third_party/LICENSE-libphonenumber.
+
+The parsing, formatting and validation algorithms follow those of
+libphonenumber-js, which is itself a rewrite of Google's libphonenumber:
+
+    https://github.com/catamphetamine/libphonenumber-js
+    Copyright (c) 2016 @catamphetamine
+    Licensed under the MIT License.
+
+No code from either project is bundled: this package is an independent
+implementation, narrowed to Japan.
+
+The source code of this package is licensed under the MIT License; see LICENSE.
+The generated numbering plan in src/data.ts (shipped as dist/*/data.js) is a
+derivative of Google's libphonenumber metadata and carries the terms of the
+Apache License 2.0 that covers it.
