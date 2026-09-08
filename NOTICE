@@ -1,4 +1,4 @@
-libphonenumber-jp
+@noooooooode/libphonenumber-jp
 
 The numbering plan in src/data.ts (shipped as dist/*/data.js) is generated from
 Google's libphonenumber:

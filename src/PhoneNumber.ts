@@ -127,7 +127,7 @@ export class PhoneNumber {
 				// Returning an empty string would look like a formatted number, so
 				// fail loudly instead.
 				throw new Error(
-					'format("IDD") needs the metadata of the country being dialled from, which libphonenumber-jp does not carry',
+					'format("IDD") needs the metadata of the country being dialled from, which this package does not carry',
 				);
 			default:
 				throw new Error(

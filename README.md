@@ -1,11 +1,11 @@
-# libphonenumber-jp
+# @noooooooode/libphonenumber-jp
 
 Parse, format and validate Japanese phone numbers with
 [libphonenumber-js][lpnjs]'s API, in under 5 kB gzipped, several times faster,
 and with no dependencies.
 
 ```js
-import { parsePhoneNumberFromString } from 'libphonenumber-jp'
+import { parsePhoneNumberFromString } from '@noooooooode/libphonenumber-jp'
 
 const number = parsePhoneNumberFromString('0312345678', 'JP')
 number.formatNational()      // '03-1234-5678'
@@ -15,7 +15,7 @@ number.isValid()             // true
 ```
 
 ```sh
-npm install libphonenumber-jp
+npm install @noooooooode/libphonenumber-jp
 ```
 
 [lpnjs]: https://github.com/catamphetamine/libphonenumber-js
@@ -56,24 +56,24 @@ Bundled with esbuild, importing `parsePhoneNumberFromString`,
 | --- | --- | --- | --- |
 | `libphonenumber-js/max` | 198.2 kB | 49.6 kB | 43.1 kB |
 | `libphonenumber-js/min` | 124.6 kB | 29.5 kB | 25.4 kB |
-| **`libphonenumber-jp`** | **11.5 kB** | **4.6 kB** | **4.1 kB** |
+| **`@noooooooode/libphonenumber-jp`** | **11.5 kB** | **4.6 kB** | **4.1 kB** |
 
 Throughput over 23 representative numbers, best of 5 rounds:
 
-| Operation | libphonenumber-js/max | libphonenumber-jp | |
+| Operation | libphonenumber-js/max | @noooooooode/libphonenumber-jp | |
 | --- | --- | --- | --- |
-| parse | 270k/s | **1,380k/s** | 5.1× |
-| parse + formatNational | 135k/s | **549k/s** | 4.1× |
-| parse + getType | 184k/s | **1,074k/s** | 5.8× |
-| isValidPhoneNumber | 154k/s | **1,170k/s** | 7.6× |
-| validatePhoneNumberLength | 208k/s | **1,504k/s** | 7.2× |
+| parse | 271k/s | **1,389k/s** | 5.1× |
+| parse + formatNational | 134k/s | **539k/s** | 4.0× |
+| parse + getType | 186k/s | **1,097k/s** | 5.9× |
+| isValidPhoneNumber | 155k/s | **1,164k/s** | 7.5× |
+| validatePhoneNumberLength | 213k/s | **1,509k/s** | 7.1× |
 
 Starting up, median of 7 fresh processes:
 
 | | Import | First call |
 | --- | --- | --- |
-| libphonenumber-js/max | 40.2 ms | 2.5 ms |
-| **libphonenumber-jp** | **4.0 ms** | **1.3 ms** |
+| libphonenumber-js/max | 37.9 ms | 2.5 ms |
+| **@noooooooode/libphonenumber-jp** | **4.1 ms** | **1.4 ms** |
 
 _Measured on Node v24.18.0 with `npm run benchmark`; absolute numbers vary by
 machine._
