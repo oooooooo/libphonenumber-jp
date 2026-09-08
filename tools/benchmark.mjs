@@ -11,6 +11,8 @@ import { build } from "esbuild";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SELF = join(ROOT, "dist", "esm", "index.js");
 const NAME = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8")).name;
+// The tables read better without the scope; the install command still needs it.
+const SHORT = NAME.replace(/^@[^/]+\//, "");
 
 // The three functions a typical caller reaches for. Bundling exactly the same
 // imports from each library is what makes the sizes comparable.
@@ -23,7 +25,7 @@ const IMPORTS = [
 const TARGETS = [
 	{ label: "`libphonenumber-js/max`", specifier: "libphonenumber-js/max" },
 	{ label: "`libphonenumber-js/min`", specifier: "libphonenumber-js/min" },
-	{ label: `**\`${NAME}\`**`, specifier: SELF, self: true },
+	{ label: `**\`${SHORT}\`**`, specifier: SELF, self: true },
 ];
 
 async function measureSize(specifier) {
@@ -197,7 +199,7 @@ ${sizes.map((s) => `| ${s.label} | ${s.self ? `**${kB(s.minified)}**` : kB(s.min
 
 ${wrap(`Throughput over ${NUMBERS.length} representative numbers, best of ${ROUNDS} rounds:`)}
 
-| Operation | libphonenumber-js/max | ${NAME} | |
+| Operation | libphonenumber-js/max | ${SHORT} | |
 | --- | --- | --- | --- |
 ${rates.map((r) => `| ${r.label} | ${perSecond(r.theirs)} | **${perSecond(r.ours)}** | ${(r.ours / r.theirs).toFixed(1)}× |`).join("\n")}
 
@@ -206,7 +208,7 @@ Starting up, median of 7 fresh processes:
 | | Import | First call |
 | --- | --- | --- |
 | libphonenumber-js/max | ${cold.theirs.importMs.toFixed(1)} ms | ${cold.theirs.firstCallMs.toFixed(1)} ms |
-| **${NAME}** | **${cold.ours.importMs.toFixed(1)} ms** | **${cold.ours.firstCallMs.toFixed(1)} ms** |
+| **${SHORT}** | **${cold.ours.importMs.toFixed(1)} ms** | **${cold.ours.firstCallMs.toFixed(1)} ms** |
 
 ${wrap(`_Measured on Node ${process.version} with \`npm run benchmark\`; absolute numbers vary by machine._`)}
 `;

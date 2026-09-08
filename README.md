@@ -1,4 +1,4 @@
-# @noooooooode/libphonenumber-jp
+# libphonenumber-jp
 
 Parse, format and validate Japanese phone numbers with
 [libphonenumber-js][lpnjs]'s API, in under 5 kB gzipped, several times faster,
@@ -56,24 +56,24 @@ Bundled with esbuild, importing `parsePhoneNumberFromString`,
 | --- | --- | --- | --- |
 | `libphonenumber-js/max` | 198.2 kB | 49.6 kB | 43.1 kB |
 | `libphonenumber-js/min` | 124.6 kB | 29.5 kB | 25.4 kB |
-| **`@noooooooode/libphonenumber-jp`** | **11.5 kB** | **4.6 kB** | **4.1 kB** |
+| **`libphonenumber-jp`** | **11.5 kB** | **4.6 kB** | **4.1 kB** |
 
 Throughput over 23 representative numbers, best of 5 rounds:
 
-| Operation | libphonenumber-js/max | @noooooooode/libphonenumber-jp | |
+| Operation | libphonenumber-js/max | libphonenumber-jp | |
 | --- | --- | --- | --- |
-| parse | 271k/s | **1,389k/s** | 5.1× |
-| parse + formatNational | 134k/s | **539k/s** | 4.0× |
-| parse + getType | 186k/s | **1,097k/s** | 5.9× |
-| isValidPhoneNumber | 155k/s | **1,164k/s** | 7.5× |
-| validatePhoneNumberLength | 213k/s | **1,509k/s** | 7.1× |
+| parse | 280k/s | **1,442k/s** | 5.1× |
+| parse + formatNational | 141k/s | **577k/s** | 4.1× |
+| parse + getType | 195k/s | **1,156k/s** | 5.9× |
+| isValidPhoneNumber | 164k/s | **1,218k/s** | 7.4× |
+| validatePhoneNumberLength | 221k/s | **1,617k/s** | 7.3× |
 
 Starting up, median of 7 fresh processes:
 
 | | Import | First call |
 | --- | --- | --- |
-| libphonenumber-js/max | 37.9 ms | 2.5 ms |
-| **@noooooooode/libphonenumber-jp** | **4.1 ms** | **1.4 ms** |
+| libphonenumber-js/max | 35.5 ms | 2.4 ms |
+| **libphonenumber-jp** | **3.6 ms** | **1.2 ms** |
 
 _Measured on Node v24.18.0 with `npm run benchmark`; absolute numbers vary by
 machine._
